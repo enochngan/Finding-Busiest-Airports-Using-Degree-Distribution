@@ -1,49 +1,44 @@
 use csv::ReaderBuilder;
+use plotters::prelude::*;
 use serde::Deserialize;
-use std::collections::HashMap;
 use std::error::Error;
-use std::fs::File;
-use std::io::Write;
 
-// Define a structure to deserialize the routes data.
 #[derive(Debug, Deserialize)]
-struct Route {
-    #[serde(rename = "Departure")]
-    source_airport: String,
-    #[serde(rename = "Destination")]
-    destination_airport: String,
+struct Airport {
+    name: String,
+    latitude: f64,
+    longitude: f64,
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    // Create a reader for the CSV file.
+    let root_area = BitMapBackend::new("airports_visualization.png", (1024, 768)).into_drawing_area();
+    root_area.fill(&WHITE)?;
+
+    let mut chart = ChartBuilder::on(&root_area)
+        .caption("Busiest Airports", ("sans-serif", 30))
+        .margin(50)
+        .x_label_area_size(30)
+        .y_label_area_size(30)
+        .build_cartesian_2d(-180f32..180f32, -90f32..90f32)?;
+
+    chart.configure_mesh().draw()?;
+
     let mut rdr = ReaderBuilder::new()
         .has_headers(true)
-        .from_path("Full_Merge_of_All_Unique_Routes.csv")?;
+        .from_path("Full_Merge_of_All_Unique Airports.csv")?;
+    
+    let airports = rdr.deserialize::<Airport>()
+        .filter_map(Result::ok)
+        .collect::<Vec<_>>();
 
-    // Print the headers first to confirm their names
-    let headers = rdr.headers()?;
-    println!("CSV Headers: {:?}", headers);
+    chart.draw_series(
+        airports.iter().map(|airport| {
+            Circle::new((airport.longitude as f32, airport.latitude as f32), 5, BLUE.filled())
+        })
+    )?;
 
-    let mut graph: HashMap<String, Vec<String>> = HashMap::new();
-
-    // Read the CSV records.
-    for result in rdr.deserialize::<Route>() {
-        let route = result?;
-        // Insert the source airport if it doesn't exist.
-        graph.entry(route.source_airport.clone())
-             .or_insert_with(Vec::new)
-             .push(route.destination_airport.clone());
-        // For undirected graph, also connect destination to source.
-        graph.entry(route.destination_airport)
-             .or_insert_with(Vec::new)
-             .push(route.source_airport);
-    }
-
-    // Write the graph to a new file.
-    let mut file = File::create("airport_graph.txt")?;
-    for (airport, connections) in graph {
-        writeln!(file, "{}: {:?}", airport, connections)?;
-    }
+    root_area.present()?;
+    println!("Airport locations have been saved to airports_visualization.png");
 
     Ok(())
 }
