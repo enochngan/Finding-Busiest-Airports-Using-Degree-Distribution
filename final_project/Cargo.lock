@@ -237,6 +237,7 @@ dependencies = [
  "csv",
  "plotters",
  "serde",
+ "serde_derive",
 ]
 
 [[package]]
