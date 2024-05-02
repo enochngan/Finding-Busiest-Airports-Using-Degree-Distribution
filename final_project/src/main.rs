@@ -97,6 +97,14 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut airports = read_airports("full_airports.csv")?;
     update_degrees(&mut airports, "full_routes.csv")?;
 
+    // Filter out airports with a degree of 0
+    airports.retain(|_, airport| airport.degree > 0);
+
+    if airports.is_empty() {
+        println!("No airports with routes to visualize.");
+        return Ok(()); // Exit if no airports to visualize
+    }
+
     let root_area = BitMapBackend::new("airports_visualization.png", (1024, 768)).into_drawing_area();
     root_area.fill(&WHITE)?;
     plot_airports(&airports, &root_area)?;
@@ -106,3 +114,4 @@ fn main() -> Result<(), Box<dyn Error>> {
     println!("Airport visualization created and airport degrees written to 'airports_degrees.csv'.");
     Ok(())
 }
+
