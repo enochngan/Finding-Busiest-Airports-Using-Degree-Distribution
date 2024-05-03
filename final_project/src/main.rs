@@ -4,16 +4,20 @@ mod lib;
 use crate::lib::{read_airports, read_routes, update_degrees};
 use crate::graph::AirportGraph;
 use std::error::Error;
-use std::io;
+use std::fs::File;
+use std::io::{self, Write};
 
 fn main() -> Result<(), Box<dyn Error>> {
     let mut airports = read_airports("full_airports.csv")?;
     let routes = read_routes("full_routes.csv")?;
-    update_degrees(&mut airports, &routes);
 
-    println!("Available Airports:");
-    for (id, airport) in &airports {
-        println!("ID: {}, Name: {}", id, airport.name);
+    let mut airports100 = update_degrees(&mut airports, &routes);
+
+    let mut file = File::create("Busiest Airports in the World.csv")?;
+    writeln!(file, "Below are Airports with over 100 degrees")?;
+    writeln!(file, "ID, Name")?; // Header for the CSV file
+    for (id, airport) in airports100 {
+        writeln!(file, "{}, {}", id, airport.name)?;
     }
 
     println!("Please enter departure airport ID:");

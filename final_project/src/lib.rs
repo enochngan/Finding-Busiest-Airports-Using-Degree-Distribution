@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use std::error::Error;
 use serde::Deserialize;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Airport {
     #[serde(rename = "Label")]
     pub name: String,
@@ -46,13 +46,24 @@ pub fn read_routes(path: &str) -> Result<Vec<Route>, Box<dyn Error>> {
     Ok(routes)
 }
 
-pub fn update_degrees(airports: &mut HashMap<String, Airport>, routes: &[Route]) {
+pub fn update_degrees(airports: &mut HashMap<String, Airport>, routes: &[Route]) -> HashMap<String, Airport> {
+    let mut airports100 = HashMap::new();
+    
     for route in routes {
         if let Some(dep) = airports.get_mut(&route.departure_id) {
             dep.degree += 1;
+            if dep.degree >= 100 {
+                airports100.entry(dep.id.clone()).or_insert_with(|| dep.clone());
+            }
         }
         if let Some(dest) = airports.get_mut(&route.destination_id) {
             dest.degree += 1;
+            if dest.degree >= 100 {
+                airports100.entry(dest.id.clone()).or_insert_with(|| dest.clone());
+            }
         }
     }
+
+    airports100
 }
+

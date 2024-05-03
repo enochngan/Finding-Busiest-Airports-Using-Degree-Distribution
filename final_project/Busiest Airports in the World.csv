@@ -1,0 +1,407 @@
+Below are Airports with over 100 degrees
+ID, Name
+SAW, Sabiha G�k�en International Airport
+AKL, Auckland International Airport
+TFN, Tenerife Norte Airport
+VLC, Valencia Airport
+MTY, General Mariano Escobedo International Airport
+IBZ, Ibiza Airport
+CTU, Chengdu Shuangliu International Airport
+BRU, Brussels Airport
+VCP, Viracopos International Airport
+GIG, Rio Gale�o � Tom Jobim International Airport
+CTS, New Chitose Airport
+PMO, Falcone�Borsellino Airport
+MCI, Kansas City International Airport
+CNX, Chiang Mai International Airport
+TAS, Tashkent International Airport
+TBS, Tbilisi International Airport
+RIX, Riga International Airport
+PUS, Gimhae International Airport
+ICN, Incheon International Airport
+BNA, Nashville International Airport
+PVR, Licenciado Gustavo D�az Ordaz International Airport
+LAX, Los Angeles International Airport
+WUH, Wuhan Tianhe International Airport
+DUB, Dublin Airport
+ANC, Ted Stevens Anchorage International Airport
+BUD, Budapest Liszt Ferenc International Airport
+GLA, Glasgow International Airport
+PVG, Shanghai Pudong International Airport
+UIO, Mariscal Sucre International Airport
+NCL, Newcastle Airport
+SFB, Orlando Sanford International Airport
+MLA, Malta International Airport
+BLL, Billund Airport
+DAL, Dallas Love Field
+BER, Berlin Brandenburg Airport
+CSX, Changsha Huanghua International Airport
+CVG, Cincinnati Northern Kentucky International Airport
+CIA, Ciampino�G. B. Pastine International Airport
+CFU, Ioannis Kapodistrias International Airport
+SXB, Strasbourg Airport
+LIN, Milano Linate Airport
+YVR, Vancouver International Airport
+NAY, Beijing Nanyuan Airport
+ZUH, Zhuhai Jinwan Airport
+JFK, John F Kennedy International Airport
+PDX, Portland International Airport
+XIY, Xi'an Xianyang International Airport
+RAK, Menara Airport
+OLB, Olbia Costa Smeralda Airport
+ADD, Addis Ababa Bole International Airport
+GVA, Geneva Cointrin International Airport
+VVO, Vladivostok International Airport
+GRO, Girona Airport
+KBP, Boryspil International Airport
+KHH, Kaohsiung International Airport
+HFE, Hefei Luogang International Airport
+BOM, Chhatrapati Shivaji International Airport
+IST, Istanbul Airport
+MSQ, Minsk National Airport
+BRS, Bristol Airport
+SSA, Deputado Luiz Eduardo Magalh�es International Airport
+SMF, Sacramento International Airport
+NKG, Nanjing Lukou Airport
+AGP, M�laga Airport
+ZAG, Zagreb Airport
+DME, Domodedovo International Airport
+LCY, London City Airport
+LHW, Lanzhou Zhongchuan Airport
+KWE, Longdongbao Airport
+ZRH, Z�rich Airport
+TRN, Turin Airport
+OGG, Kahului Airport
+FLR, Peretola Airport
+LIS, Humberto Delgado Airport (Lisbon Portela Airport)
+XNN, Xining Caojiabu Airport
+REP, Siem Reap International Airport
+KHI, Jinnah International Airport
+MXP, Malpensa International Airport
+AUS, Austin Bergstrom International Airport
+IKT, Irkutsk Airport
+CWB, Afonso Pena Airport
+YOW, Ottawa Macdonald-Cartier International Airport
+PSA, Pisa International Airport
+BLQ, Bologna Guglielmo Marconi Airport
+YHZ, Halifax / Stanfield International Airport
+SLC, Salt Lake City International Airport
+CHQ, Chania International Airport
+MIA, Miami International Airport
+SJC, Norman Y. Mineta San Jose International Airport
+YUL, Montreal / Pierre Elliott Trudeau International Airport
+HAM, Hamburg Airport
+TXL, Berlin-Tegel Airport
+SJD, Los Cabos International Airport
+VKO, Vnukovo International Airport
+HHN, Frankfurt-Hahn Airport
+FOR, Pinto Martins International Airport
+BOD, Bordeaux-M�rignac Airport
+SJW, Shijiazhuang Daguocun International Airport
+SSH, Sharm El Sheikh International Airport
+TPA, Tampa International Airport
+HER, Heraklion International Nikos Kazantzakis Airport
+SJO, Juan Santamaria International Airport
+SXM, Princess Juliana International Airport
+TPE, Taiwan Taoyuan International Airport
+DAD, Da Nang International Airport
+SAT, San Antonio International Airport
+PUJ, Punta Cana International Airport
+ORY, Paris-Orly Airport
+LCA, Larnaca International Airport
+SNA, John Wayne Airport-Orange County Airport
+DFW, Dallas Fort Worth International Airport
+HAJ, Hannover Airport
+NCE, Nice-C�te d'Azur Airport
+KWI, Kuwait International Airport
+WRO, Copernicus Wroclaw Airport
+YNT, Yantai Laishan Airport
+NGB, Ningbo Lishe International Airport
+KIX, Kansai International Airport
+ESB, Esenboga International Airport
+BKI, Kota Kinabalu International Airport
+SPU, Split Airport
+DXB, Dubai International Airport
+DPS, Ngurah Rai (Bali) International Airport
+TLS, Toulouse-Blagnac Airport
+AMS, Amsterdam Airport Schiphol
+CNS, Cairns International Airport
+BAH, Bahrain International Airport
+ATL, Hartsfield Jackson Atlanta International Airport
+SJU, Luis Munoz Marin International Airport
+DLC, Zhoushuizi Airport
+PER, Perth International Airport
+URC, �r�mqi Diwopu International Airport
+LPL, Liverpool John Lennon Airport
+FLL, Fort Lauderdale Hollywood International Airport
+THR, Mehrabad International Airport
+ADB, Adnan Menderes International Airport
+CPT, Cape Town International Airport
+PEN, Penang International Airport
+BRI, Bari Karol Wojtyla Airport
+GYD, Heydar Aliyev International Airport
+ZHA, Zhanjiang Airport
+SOF, Sofia Airport
+CKG, Chongqing Jiangbei International Airport
+DMK, Don Mueang International Airport
+SHJ, Sharjah International Airport
+DUS, D�sseldorf Airport
+FAO, Faro Airport
+CMN, Mohammed V International Airport
+BGO, Bergen Airport Flesland
+HEL, Helsinki Vantaa Airport
+SHA, Shanghai Hongqiao International Airport
+OKA, Naha Airport
+TIA, Tirana International Airport Mother Teresa
+LHR, London Heathrow Airport
+MDW, Chicago Midway International Airport
+NNG, Nanning Wuxu Airport
+LAD, Quatro de Fevereiro Airport
+UPG, Hasanuddin International Airport
+CPH, Copenhagen Kastrup Airport
+PRG, V�clav Havel Airport Prague
+KWL, Guilin Liangjiang International Airport
+CZX, Changzhou Benniu Airport
+BVA, Paris Beauvais Till� Airport
+DYU, Dushanbe Airport
+BGY, Il Caravaggio International Airport
+BCN, Barcelona International Airport
+NTE, Nantes Atlantique Airport
+PIT, Pittsburgh International Airport
+LGW, London Gatwick Airport
+MRS, Marseille Provence Airport
+TLV, Ben Gurion International Airport
+CCU, Netaji Subhash Chandra Bose International Airport
+BHX, Birmingham International Airport
+FOC, Fuzhou Changle International Airport
+BOS, General Edward Lawrence Logan International Airport
+STL, St Louis Lambert International Airport
+EZE, Ministro Pistarini International Airport
+RUH, King Khaled International Airport
+PBI, Palm Beach International Airport
+SYD, Sydney Kingsford Smith International Airport
+AJA, Ajaccio-Napol�on Bonaparte Airport
+CGQ, Longjia Airport
+TAO, Liuting Airport
+HET, Baita International Airport
+VNO, Vilnius International Airport
+BKK, Suvarnabhumi Airport
+TFS, Tenerife South Airport
+AUA, Queen Beatrix International Airport
+BSB, Presidente Juscelino Kubistschek International Airport
+OPO, Francisco de S� Carneiro Airport
+MBJ, Sangster International Airport
+YWG, Winnipeg / James Armstrong Richardson International Airport
+POM, Port Moresby Jacksons International Airport
+OAK, Metropolitan Oakland International Airport
+DSN, Ordos Ejin Horo Airport
+ABV, Nnamdi Azikiwe International Airport
+DAR, Julius Nyerere International Airport
+OSL, Oslo Lufthavn
+CGK, Soekarno-Hatta International Airport
+JED, King Abdulaziz International Airport
+SFO, San Francisco International Airport
+HNL, Daniel K Inouye International Airport
+LHE, Alama Iqbal International Airport
+NAP, Naples International Airport
+MLE, Mal� International Airport
+SCL, Comodoro Arturo Merino Ben�tez International Airport
+KHV, Khabarovsk-Novy Airport
+SWA, Jieyang Chaoshan International Airport
+KRT, Khartoum International Airport
+TSA, Taipei Songshan Airport
+CMH, John Glenn Columbus International Airport
+MFM, Macau International Airport
+WNZ, Wenzhou Longwan International Airport
+GRU, Guarulhos - Governador Andr� Franco Montoro International Airport
+LBA, Leeds Bradford Airport
+NGO, Chubu Centrair International Airport
+CLE, Cleveland Hopkins International Airport
+ATH, Eleftherios Venizelos International Airport
+VCE, Venice Marco Polo Airport
+LUX, Luxembourg-Findel International Airport
+CGN, Cologne Bonn Airport
+RHO, Diagoras Airport
+NBO, Jomo Kenyatta International Airport
+MED, Prince Mohammad Bin Abdulaziz Airport
+DCA, Ronald Reagan Washington National Airport
+HND, Tokyo Haneda International Airport
+YYC, Calgary International Airport
+OTP, Henri Coanda International Airport
+GOT, Gothenburg-Landvetter Airport
+LIL, Lille-Lesquin Airport
+LEJ, Leipzig/Halle Airport
+EVN, Zvartnots International Airport
+ABJ, Port Bouet Airport
+YCU, Yuncheng Guangong Airport
+LAS, McCarran International Airport
+SVG, Stavanger Airport Sola
+JJN, Quanzhou Jinjiang International Airport
+BDL, Bradley International Airport
+HAV, Jos� Mart� International Airport
+OKC, Will Rogers World Airport
+BOG, El Dorado International Airport
+TUN, Tunis Carthage International Airport
+MCO, Orlando International Airport
+ALA, Almaty Airport
+HRG, Hurghada International Airport
+ACE, Lanzarote Airport
+TLL, Lennart Meri Tallinn Airport
+YEG, Edmonton International Airport
+AYT, Antalya International Airport
+SEA, Seattle Tacoma International Airport
+TNA, Yaoqiang Airport
+ORD, Chicago O'Hare International Airport
+CRL, Brussels South Charleroi Airport
+FUK, Fukuoka Airport
+PFO, Paphos International Airport
+EIN, Eindhoven Airport
+AEP, Jorge Newbery Airpark
+MPL, Montpellier-M�diterran�e Airport
+GDN, Gdansk Lech Walesa Airport
+DBV, Dubrovnik Airport
+SAN, San Diego International Airport
+SVX, Koltsovo Airport
+WUX, Sunan Shuofang International Airport
+SYZ, Shiraz Shahid Dastghaib International Airport
+CEB, Mactan Cebu International Airport
+PHL, Philadelphia International Airport
+HRB, Taiping Airport
+SHE, Taoxian Airport
+MAN, Manchester Airport
+RGN, Yangon International Airport
+MAD, Adolfo Su�rez Madrid�Barajas Airport
+EBL, Erbil International Airport
+GUA, La Aurora Airport
+AUH, Abu Dhabi International Airport
+JAX, Jacksonville International Airport
+ALC, Alicante International Airport
+MKE, General Mitchell International Airport
+SXF, Berlin-Sch�nefeld Airport
+CMB, Bandaranaike International Colombo Airport
+FRA, Frankfurt am Main Airport
+BIA, Bastia-Poretta Airport
+LPA, Gran Canaria Airport
+JNB, OR Tambo International Airport
+CJU, Jeju International Airport
+DAC, Hazrat Shahjalal International Airport
+OVB, Tolmachevo Airport
+ACC, Kotoka International Airport
+DLM, Dalaman International Airport
+BLR, Kempegowda International Airport
+LOS, Murtala Muhammed International Airport
+KRR, Krasnodar Pashkovsky International Airport
+CGH, Congonhas Airport
+PNH, Phnom Penh International Airport
+AER, Sochi International Airport
+PTY, Tocumen International Airport
+LJG, Lijiang Airport
+COK, Cochin International Airport
+KRK, Krak�w John Paul II International Airport
+RSW, Southwest Florida International Airport
+BWI, Baltimore/Washington International Thurgood Marshall Airport
+GYE, Jos� Joaqu�n de Olmedo International Airport
+YIH, Yichang Sanxia Airport
+FCO, Leonardo da Vinci�Fiumicino Airport
+MEL, Melbourne International Airport
+SUB, Juanda International Airport
+IAD, Washington Dulles International Airport
+ISB, New Islamabad International Airport
+WAW, Warsaw Chopin Airport
+MSY, Louis Armstrong New Orleans International Airport
+KHN, Nanchang Changbei International Airport
+MSP, Minneapolis-St Paul International/Wold-Chamberlain Airport
+ADL, Adelaide International Airport
+VIE, Vienna International Airport
+HGH, Hangzhou Xiaoshan International Airport
+BEG, Belgrade Nikola Tesla Airport
+CDG, Charles de Gaulle International Airport
+NAS, Lynden Pindling International Airport
+KMG, Kunming Changshui International Airport
+SIN, Singapore Changi Airport
+CAG, Cagliari Elmas Airport
+STN, London Stansted Airport
+LIM, Jorge Ch�vez International Airport
+DMM, King Fahd International Airport
+SDQ, Las Am�ricas International Airport
+STR, Stuttgart Airport
+EWR, Newark Liberty International Airport
+RDU, Raleigh Durham International Airport
+FUE, Fuerteventura Airport
+PEK, Beijing Capital International Airport
+IAH, George Bush Intercontinental Houston Airport
+CTA, Catania-Fontanarossa Airport
+BEY, Beirut Rafic Hariri International Airport
+BIO, Bilbao Airport
+SKG, Thessaloniki Macedonia International Airport
+DEL, Indira Gandhi International Airport
+EMA, East Midlands Airport
+EDI, Edinburgh Airport
+CAI, Cairo International Airport
+HAN, Noi Bai International Airport
+BSL, EuroAirport Basel-Mulhouse-Freiburg Airport
+DTW, Detroit Metropolitan Wayne County Airport
+KJA, Yemelyanovo Airport
+KEF, Keflavik International Airport
+MRU, Sir Seewoosagur Ramgoolam International Airport
+SVQ, Sevilla Airport
+SGN, Tan Son Nhat International Airport
+HKT, Phuket International Airport
+DWC, Al Maktoum International Airport
+DKR, L�opold S�dar Senghor International Airport
+PKX, Beijing Daxing International Airport
+DLA, Douala International Airport
+DOH, Hamad International Airport
+CNF, Tancredo Neves International Airport
+LTN, London Luton Airport
+PMI, Palma De Mallorca Airport
+CLT, Charlotte Douglas International Airport
+AMD, Sardar Vallabhbhai Patel International Airport
+MUC, Munich Airport
+LGA, La Guardia Airport
+KGS, Kos Airport
+TSN, Tianjin Binhai International Airport
+CUN, Canc�n International Airport
+ALG, Houari Boumediene Airport
+COO, Cadjehoun Airport
+CCS, Sim�n Bol�var International Airport
+HKG, Hong Kong International Airport
+IND, Indianapolis International Airport
+IKA, Imam Khomeini International Airport
+TSE, Astana International Airport
+MNL, Ninoy Aquino International Airport
+REC, Guararapes - Gilberto Freyre International Airport
+INC, Yinchuan
+SZX, Shenzhen Bao'an International Airport
+LYS, Lyon Saint-Exup�ry Airport
+CAN, Guangzhou Baiyun International Airport
+SYX, Sanya Phoenix International Airport
+MHD, Mashhad International Airport
+HAK, Haikou Meilan International Airport
+LED, Pulkovo Airport
+BNE, Brisbane International Airport
+POA, Salgado Filho Airport
+MEX, Licenciado Benito Juarez International Airport
+CGO, Zhengzhou Xinzheng International Airport
+SVO, Sheremetyevo International Airport
+HYD, Rajiv Gandhi International Airport
+AMM, Queen Alia International Airport
+GDL, Don Miguel Hidalgo Y Costilla International Airport
+ARN, Stockholm-Arlanda Airport
+YYZ, Lester B. Pearson International Airport
+BRE, Bremen Airport
+SAL, Monse�or �scar Arnulfo Romero International Airport
+DEN, Denver International Airport
+PHX, Phoenix Sky Harbor International Airport
+HOU, William P Hobby Airport
+FNC, Madeira Airport
+KUL, Kuala Lumpur International Airport
+NRT, Narita International Airport
+MAA, Chennai International Airport
+MCT, Muscat International Airport
+KTM, Tribhuvan International Airport
+FRU, Manas International Airport
+XMN, Xiamen Gaoqi International Airport
+TYN, Taiyuan Wusu Airport
+MEM, Memphis International Airport
+NUE, Nuremberg Airport
