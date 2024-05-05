@@ -71,7 +71,7 @@ mod tests {
             },
             Route {
                 departure_id: "A1".to_string(),
-                destination_id: "A4".to_string(), /
+                destination_id: "A4".to_string(),
             }
         ];
 
