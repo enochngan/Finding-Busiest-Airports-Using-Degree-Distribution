@@ -48,42 +48,42 @@ pub fn read_routes(path: &str) -> Result<Vec<Route>, Box<dyn Error>> {
 }
 
 // updates the degree of connectivity for each airport based on the routes data
-pub fn update_degrees(airports: &mut HashMap<String, Airport>, routes: &[Route]) -> HashMap<String, Airport> {
-    let mut airports100 = HashMap::new();
+pub fn update_degrees(airports: &mut HashMap<String, Airport>, routes: &[Route]) {
     for route in routes {
         // increments the degree for departure and destination airports
         if let Some(dep) = airports.get_mut(&route.departure_id) {
             dep.degree += 1;
-            if dep.degree >= 100 { // checkes if the degree is 100 or more and store separately
-                airports100.entry(dep.id.clone()).or_insert_with(|| dep.clone());
-            }
         }
         if let Some(dest) = airports.get_mut(&route.destination_id) {
             dest.degree += 1;
-            if dest.degree >= 100 {
-                airports100.entry(dest.id.clone()).or_insert_with(|| dest.clone());
-            }
         }
     }
-    airports100 // returns airports with degrees of 100 or more
 }
 
 // calculates second-degree connections for each airport
 pub fn calculate_degree2(airports: &mut HashMap<String, Airport>, adjacency_list: &HashMap<String, Vec<String>>) {
+    // iterates over each airport and its mutable reference within the hashmap to update its degree2 value
     for (airport_id, airport) in airports.iter_mut() {
+        // initializes a HashSet to track unique second-degree neighbors
         let mut neighbors2 = HashSet::new();
+        // retrieves the first-degree neighbors of the current airport from the adjacency list
         if let Some(neighbors) = adjacency_list.get(airport_id) {
+            // iterates over each first-degree neighbor of the current airport
             for neighbor in neighbors {
+                // retrieves neighbors of each neighbor (second-degree to the original airport)
                 if let Some(second_neighbors) = adjacency_list.get(neighbor) {
+                    // iterates over each second-degree neighbor
                     for second_neighbor in second_neighbors {
+                        // ensures the second-degree neighbor is not the original airport itself
                         if second_neighbor != airport_id && !neighbors.contains(second_neighbor) {
-                            neighbors2.insert(second_neighbor); // collects unique second-degree neighbors
+                            // adds unique second-degree neighbors to the set
+                            neighbors2.insert(second_neighbor.clone());
                         }
                     }
                 }
             }
         }
-        airport.degree2 = neighbors2.len(); // updates the count of second-degree neighbors
+        airport.degree2 = neighbors2.len();
     }
 }
 

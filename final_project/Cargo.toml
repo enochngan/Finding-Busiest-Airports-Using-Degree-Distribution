@@ -10,3 +10,10 @@ csv = "1.1"
 serde = { version = "1.0", features = ["derive"] }
 plotters = "0.3"
 serde_derive = "1.0"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "final_project"
+path = "src/main.rs"

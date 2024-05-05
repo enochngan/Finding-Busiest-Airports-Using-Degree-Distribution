@@ -1,7 +1,6 @@
 mod graph;
-mod lib;
 
-use crate::lib::{read_airports, read_routes, update_degrees, calculate_statistics, calculate_degree2};
+use final_project::{Airport, read_airports, read_routes, update_degrees, calculate_statistics, calculate_degree2};
 use crate::graph::AirportGraph;
 use std::error::Error;
 use std::fs::File;
@@ -15,7 +14,24 @@ fn main() -> Result<(), Box<dyn Error>> {
     let routes = read_routes("full_routes.csv")?;
 
     // calculates the degree of connectivity using update_degrees for each airport based on routes
-    let airports100 = update_degrees(&mut airports, &routes);
+    update_degrees(&mut airports, &routes);
+
+    // creates and writes to a file, listing airports with more than 100 direct connections
+    let mut file = File::create("Ranked Busiest Airports in the World by Degrees.csv")?;
+
+    // writes the header of the file
+    writeln!(file, "ID, Name, Degree")?;
+
+    // converts the HashMap into a vector for sorting
+    let mut airports_vec: Vec<(&String, &Airport)> = airports.iter().collect();
+
+    // sorts the vector by degree in descending order
+    airports_vec.sort_by(|a, b| b.1.degree.cmp(&a.1.degree));
+
+    // iterates over the sorted vector and write each entry to the file, ensuring names are properly quoted
+    for (id, airport) in airports_vec {
+        writeln!(file, "\"{}\", {}, {}", airport.name, id, airport.degree)?;
+    }
 
     // collects the degrees of all airports into a HashMap 
     let degrees: HashMap<String, usize> = airports.iter()
@@ -81,14 +97,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     println!(""); 
 
-    // creates and writes to a file, listing airports with more than 100 direct connections
-    let mut file = File::create("Busiest Airports in the World.csv")?;
-    writeln!(file, "Below are Airports with Over 100 Degrees")?;
-    writeln!(file, "ID, Name")?;
-    for (id, airport) in airports100 {
-        writeln!(file, "{}, {}", id, airport.name)?;
-    }
-
+    println!("Calculate the shortest path from input departure airport to destination airport");    
     // user input for departure airport ID
     println!("Please enter departure airport ID:");
     let mut departure_id = String::new();

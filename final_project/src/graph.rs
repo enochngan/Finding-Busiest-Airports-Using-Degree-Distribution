@@ -1,4 +1,4 @@
-use crate::lib::{Route};
+use final_project::Route;
 use std::collections::{HashMap, VecDeque};
 
 // defines a struct to represent an airport graph
@@ -51,7 +51,7 @@ impl AirportGraph {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::lib::Route;
+    use final_project::Route;
 
     #[test]
     fn test_calculate_switches() {
