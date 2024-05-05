@@ -118,3 +118,57 @@ pub fn calculate_statistics(degrees: &HashMap<String, usize>) -> (usize, usize, 
 
     (min, max, mean, median, percentiles) 
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::collections::HashMap;
+
+    // tests the calculate_statistics function 
+    #[test]
+    fn test_calculate_statistics() {
+        // creates a sample HashMap 
+        let degrees: HashMap<String, usize> = [
+            ("A1".to_string(), 1),
+            ("A2".to_string(), 2),
+            ("A3".to_string(), 3),
+            ("A4".to_string(), 4),
+            ("A5".to_string(), 5)
+        ].iter().cloned().collect();
+
+        // calculates statistics from the degrees HashMap
+        let (min_degree, max_degree, mean_degree, median_degree, percentiles) = calculate_statistics(&degrees);
+
+        assert_eq!(min_degree, 1); 
+        assert_eq!(max_degree, 5); 
+        assert_eq!(mean_degree, 3.0); 
+        assert_eq!(median_degree, 3); 
+    }
+
+    // tests the calculate_degree2 function
+    #[test]
+    fn test_calculate_degree2() {
+        // initializes a HashMap of airports, setting each with an initial degree and degree2 of 0
+        let mut airports: HashMap<String, Airport> = HashMap::from([
+            ("A1".to_string(), Airport { name: "Airport 1".to_string(), id: "A1".to_string(), degree: 0, degree2: 0 }),
+            ("A2".to_string(), Airport { name: "Airport 2".to_string(), id: "A2".to_string(), degree: 0, degree2: 0 }),
+            ("A3".to_string(), Airport { name: "Airport 3".to_string(), id: "A3".to_string(), degree: 0, degree2: 0 }),
+            ("A4".to_string(), Airport { name: "Airport 4".to_string(), id: "A4".to_string(), degree: 0, degree2: 0 }),
+        ]);
+
+        // defines the adjacency list to simulate direct connections between airports
+        let adjacency_list: HashMap<String, Vec<String>> = HashMap::from([
+            ("A1".to_string(), vec!["A2".to_string(), "A3".to_string()]),
+            ("A2".to_string(), vec!["A1".to_string(), "A3".to_string(), "A4".to_string()]),
+            ("A3".to_string(), vec!["A1".to_string(), "A2".to_string()]),
+            ("A4".to_string(), vec!["A2".to_string()]),
+        ]);        
+
+        calculate_degree2(&mut airports, &adjacency_list);
+
+        assert_eq!(airports.get("A1").unwrap().degree2, 1); 
+        assert_eq!(airports.get("A2").unwrap().degree2, 0); 
+        assert_eq!(airports.get("A3").unwrap().degree2, 1); 
+        assert_eq!(airports.get("A4").unwrap().degree2, 2); 
+    }
+}

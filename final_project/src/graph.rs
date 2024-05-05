@@ -47,3 +47,44 @@ impl AirportGraph {
         distances
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::lib::Route;
+
+    #[test]
+    fn test_calculate_switches() {
+        // sets up the test data for the routes
+        let routes = vec![
+            Route {
+                departure_id: "A1".to_string(),
+                destination_id: "A2".to_string(),
+            },
+            Route {
+                departure_id: "A2".to_string(),
+                destination_id: "A3".to_string(),
+            },
+            Route {
+                departure_id: "A3".to_string(),
+                destination_id: "A4".to_string(),
+            },
+            Route {
+                departure_id: "A1".to_string(),
+                destination_id: "A4".to_string(), /
+            }
+        ];
+
+        // creates an instance of the AirportGraph using the routes defined above
+        let graph = AirportGraph::new(routes);
+
+        // calculates switches from airport A1
+        let distances = graph.calculate_switches("A1");
+
+        // assertions to ensure the distances are as expected
+        assert_eq!(distances.get("A1").cloned().unwrap_or(usize::MAX), 0, "Distance from A1 to itself should be 0");
+        assert_eq!(distances.get("A2").cloned().unwrap_or(usize::MAX), 1, "Distance from A1 to A2 should be 1");
+        assert_eq!(distances.get("A3").cloned().unwrap_or(usize::MAX), 2, "Distance from A1 to A3 should be 2");
+        assert_eq!(distances.get("A4").cloned().unwrap_or(usize::MAX), 1, "Distance from A1 to A4 should be 1 through the direct route");
+    }
+}
