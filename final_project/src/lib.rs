@@ -1,57 +1,60 @@
 use csv::Reader;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::error::Error;
 use serde::Deserialize;
-use std::collections::HashSet;
 
+// defines data structure for airports with serialization details
 #[derive(Debug, Deserialize, Clone)]
 pub struct Airport {
     #[serde(rename = "Label")]
     pub name: String,
-    #[serde(rename = "ID")]
+    #[serde(rename = "ID")] 
     pub id: String,
     #[serde(skip)]
-    pub degree: usize,
+    pub degree: usize, 
     #[serde(skip)]
-    pub degree2: usize,  // New field to count second-degree neighbors
+    pub degree2: usize, 
 }
 
+// defines data structure for routes with serialization details
 #[derive(Debug, Deserialize)]
 pub struct Route {
-    #[serde(rename = "Departure")]
+    #[serde(rename = "Departure")] 
     pub departure_id: String,
-    #[serde(rename = "Destination")]
+    #[serde(rename = "Destination")] 
     pub destination_id: String,
 }
 
+// reads and parses airports data from a CSV file
 pub fn read_airports(path: &str) -> Result<HashMap<String, Airport>, Box<dyn Error>> {
-    let mut rdr = Reader::from_path(path)?;
+    let mut rdr = Reader::from_path(path)?; // creates a CSV reader from a file path
     let mut airports = HashMap::new();
     for result in rdr.deserialize() {
-        let mut airport: Airport = result?;
-        airport.degree = 0;
-        airports.insert(airport.id.clone(), airport);
+        let airport: Airport = result?; // deserializes each record into an Airport object
+        airports.insert(airport.id.clone(), airport); // adds to the hashmap with the airport ID as the key
     }
     Ok(airports)
 }
 
+// reads and parses routes data from a CSV file
 pub fn read_routes(path: &str) -> Result<Vec<Route>, Box<dyn Error>> {
-    let mut rdr = Reader::from_path(path)?;
+    let mut rdr = Reader::from_path(path)?; // creates a CSV reader from a file path
     let mut routes = Vec::new();
     for result in rdr.deserialize() {
-        let route: Route = result?;
-        routes.push(route);
+        let route: Route = result?; // deserializes each record into a Route object
+        routes.push(route); // adds to the vector
     }
     Ok(routes)
 }
 
+// updates the degree of connectivity for each airport based on the routes data
 pub fn update_degrees(airports: &mut HashMap<String, Airport>, routes: &[Route]) -> HashMap<String, Airport> {
     let mut airports100 = HashMap::new();
-    
     for route in routes {
+        // increments the degree for departure and destination airports
         if let Some(dep) = airports.get_mut(&route.departure_id) {
             dep.degree += 1;
-            if dep.degree >= 100 {
+            if dep.degree >= 100 { // checkes if the degree is 100 or more and store separately
                 airports100.entry(dep.id.clone()).or_insert_with(|| dep.clone());
             }
         }
@@ -62,44 +65,39 @@ pub fn update_degrees(airports: &mut HashMap<String, Airport>, routes: &[Route])
             }
         }
     }
-
-    airports100
+    airports100 // returns airports with degrees of 100 or more
 }
 
+// calculates second-degree connections for each airport
 pub fn calculate_degree2(airports: &mut HashMap<String, Airport>, adjacency_list: &HashMap<String, Vec<String>>) {
     for (airport_id, airport) in airports.iter_mut() {
-        let mut neighbors2 = HashSet::new();  // To keep track of unique second-degree neighbors
-
+        let mut neighbors2 = HashSet::new();
         if let Some(neighbors) = adjacency_list.get(airport_id) {
             for neighbor in neighbors {
                 if let Some(second_neighbors) = adjacency_list.get(neighbor) {
                     for second_neighbor in second_neighbors {
                         if second_neighbor != airport_id && !neighbors.contains(second_neighbor) {
-                            neighbors2.insert(second_neighbor);
+                            neighbors2.insert(second_neighbor); // collects unique second-degree neighbors
                         }
                     }
                 }
             }
         }
-
-        airport.degree2 = neighbors2.len();  // Set the count of unique second-degree neighbors
+        airport.degree2 = neighbors2.len(); // updates the count of second-degree neighbors
     }
 }
 
+// calculates statistical metrics from a set of degree values
 pub fn calculate_statistics(degrees: &HashMap<String, usize>) -> (usize, usize, f64, usize, Vec<(usize, f64)>) {
     let mut degree_values: Vec<usize> = degrees.values().cloned().collect();
-    if degree_values.is_empty() {
-        return (0, 0, 0.0, 0, vec![]);
-    }
-
-    degree_values.sort_unstable();
+    degree_values.sort_unstable(); 
     let min = *degree_values.first().unwrap();
-    let max = *degree_values.last().unwrap();
-    let sum: usize = degree_values.iter().sum();
-    let count = degree_values.len();
-    let mean = sum as f64 / count as f64;
+    let max = *degree_values.last().unwrap(); 
+    let sum: usize = degree_values.iter().sum(); 
+    let count = degree_values.len(); 
+    let mean = sum as f64 / count as f64; 
 
-    // Calculate median
+    // calculates median degree
     let mid = count / 2;
     let median = if count % 2 == 0 {
         (degree_values[mid - 1] + degree_values[mid]) / 2
@@ -107,16 +105,16 @@ pub fn calculate_statistics(degrees: &HashMap<String, usize>) -> (usize, usize, 
         degree_values[mid]
     };
 
-    // Calculate cumulative percentiles
+    // calculates percentiles
     let thresholds = [100, 250, 500, 750, 1000, 1250, 1500, 1750, 2000];
     let mut percentiles = Vec::new();
-    let mut last_count: f64 = 0.0;  // Change type to f64
+    let mut last_count: f64 = 0.0;
     for &threshold in &thresholds {
         let count_up_to_threshold = degree_values.iter().filter(|&&d| d <= threshold).count();
         let percentile = (count_up_to_threshold as f64 / count as f64) * 100.0;
         percentiles.push((threshold, percentile - last_count));
-        last_count = percentile;  // Ensure last_count is also f64
+        last_count = percentile;
     }
 
-    (min, max, mean, median, percentiles)
+    (min, max, mean, median, percentiles) 
 }
