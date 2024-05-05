@@ -1,4 +1,4 @@
-use crate::lib::{Airport, Route};
+use crate::lib::{Route};
 use std::collections::{HashMap, VecDeque};
 
 pub struct AirportGraph {
@@ -35,4 +35,3 @@ impl AirportGraph {
         distances
     }
 }
-

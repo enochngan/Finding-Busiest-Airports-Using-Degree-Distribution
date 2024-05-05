@@ -2,6 +2,7 @@ use csv::Reader;
 use std::collections::HashMap;
 use std::error::Error;
 use serde::Deserialize;
+use std::collections::HashSet;
 
 #[derive(Debug, Deserialize, Clone)]
 pub struct Airport {
@@ -9,12 +10,10 @@ pub struct Airport {
     pub name: String,
     #[serde(rename = "ID")]
     pub id: String,
-    #[serde(rename = "Latitude")]
-    pub latitude: f64,
-    #[serde(rename = "Longitude")]
-    pub longitude: f64,
     #[serde(skip)]
     pub degree: usize,
+    #[serde(skip)]
+    pub degree2: usize,  // New field to count second-degree neighbors
 }
 
 #[derive(Debug, Deserialize)]
@@ -67,3 +66,57 @@ pub fn update_degrees(airports: &mut HashMap<String, Airport>, routes: &[Route])
     airports100
 }
 
+pub fn calculate_degree2(airports: &mut HashMap<String, Airport>, adjacency_list: &HashMap<String, Vec<String>>) {
+    for (airport_id, airport) in airports.iter_mut() {
+        let mut neighbors2 = HashSet::new();  // To keep track of unique second-degree neighbors
+
+        if let Some(neighbors) = adjacency_list.get(airport_id) {
+            for neighbor in neighbors {
+                if let Some(second_neighbors) = adjacency_list.get(neighbor) {
+                    for second_neighbor in second_neighbors {
+                        if second_neighbor != airport_id && !neighbors.contains(second_neighbor) {
+                            neighbors2.insert(second_neighbor);
+                        }
+                    }
+                }
+            }
+        }
+
+        airport.degree2 = neighbors2.len();  // Set the count of unique second-degree neighbors
+    }
+}
+
+pub fn calculate_statistics(degrees: &HashMap<String, usize>) -> (usize, usize, f64, usize, Vec<(usize, f64)>) {
+    let mut degree_values: Vec<usize> = degrees.values().cloned().collect();
+    if degree_values.is_empty() {
+        return (0, 0, 0.0, 0, vec![]);
+    }
+
+    degree_values.sort_unstable();
+    let min = *degree_values.first().unwrap();
+    let max = *degree_values.last().unwrap();
+    let sum: usize = degree_values.iter().sum();
+    let count = degree_values.len();
+    let mean = sum as f64 / count as f64;
+
+    // Calculate median
+    let mid = count / 2;
+    let median = if count % 2 == 0 {
+        (degree_values[mid - 1] + degree_values[mid]) / 2
+    } else {
+        degree_values[mid]
+    };
+
+    // Calculate cumulative percentiles
+    let thresholds = [100, 250, 500, 750, 1000, 1250, 1500, 1750, 2000];
+    let mut percentiles = Vec::new();
+    let mut last_count: f64 = 0.0;  // Change type to f64
+    for &threshold in &thresholds {
+        let count_up_to_threshold = degree_values.iter().filter(|&&d| d <= threshold).count();
+        let percentile = (count_up_to_threshold as f64 / count as f64) * 100.0;
+        percentiles.push((threshold, percentile - last_count));
+        last_count = percentile;  // Ensure last_count is also f64
+    }
+
+    (min, max, mean, median, percentiles)
+}
