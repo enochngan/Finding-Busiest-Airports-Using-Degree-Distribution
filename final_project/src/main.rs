@@ -16,7 +16,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     // calculates the degree of connectivity using update_degrees for each airport based on routes
     update_degrees(&mut airports, &routes);
 
-    // creates and writes to a file, listing airports with more than 100 direct connections
+    // creates and writes to a file, listing all airports in descending order by degree
     let mut file = File::create("Ranked Busiest Airports in the World by Degrees.csv")?;
 
     // writes the header of the file

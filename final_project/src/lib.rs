@@ -33,7 +33,7 @@ pub fn read_airports(path: &str) -> Result<HashMap<String, Airport>, Box<dyn Err
         let airport: Airport = result?; // deserializes each record into an Airport object
         airports.insert(airport.id.clone(), airport); // adds to the hashmap with the airport ID as the key
     }
-    Ok(airports)
+    Ok(airports)YUL
 }
 
 // reads and parses routes data from a CSV file
