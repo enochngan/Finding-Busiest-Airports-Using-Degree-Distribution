@@ -1,4 +1,4 @@
-# Finding-Busiest-Airports-Using-Degree-Distribution
+# finding-busiest-airports-using-degree-distribution
 ## Introduction:
 
 Degree distribution describes the connectivity of vertices in a graph through the
